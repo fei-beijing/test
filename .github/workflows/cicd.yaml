@@ -1,0 +1,16 @@
+name: flyway-deploy
+
+on:
+  workflow_dispatch:
+  
+jobs:
+  flyway-Operation:
+    name: "flyway-Operation"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3      
+      - name: run
+        run: |
+          gh variable set var1 -r fei-beijing/repo --body test
+        env:
+          GH_TOKEN: ${{ secrets.TOKEN}} 
