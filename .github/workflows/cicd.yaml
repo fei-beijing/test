@@ -11,11 +11,8 @@ jobs:
       - uses: actions/checkout@v3      
       - name: run
         run: |
-          gh environment GH_REPO fei-beijing/repo
+          gh api -X PUT /repos/fei-beijing/repo/actions/vars \
+          -H "Accept: application/vnd.github.v3+json" \
+          -d '{"test": "1"}'  
         env:
-          GH_TOKEN: ${{ secrets.TOKEN}} 
-      - name: add
-        run: |
-          gh variable set MY_VAR --body my_value
-        env:
-          GH_TOKEN: ${{ secrets.TOKEN}}         
+           GH_TOKEN: ${{ secrets.TOKEN}}         
